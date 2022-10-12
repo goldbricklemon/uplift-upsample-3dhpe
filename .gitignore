@@ -1,0 +1,11 @@
+*.pyc
+__pycache__/
+
+*.pb
+*.pt
+
+.idea/
+.DS_Store
+
+models/*.h5
+data/*.npz

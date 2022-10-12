@@ -1,0 +1,103 @@
+{
+    "ARCH": "UpliftUpsampleTransformer",
+    "ATTENTION_DROP_RATE": 0.0,
+    "AUGM_FLIP_KEYPOINT_ORDER": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        0,
+        6,
+        7,
+        8,
+        9,
+        10,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+    ],
+    "AUGM_FLIP_PROB": 0.5,
+    "BATCH_SIZE": 512,
+    "BEST_CHECKPOINT_METRIC": "AW-MPJPE",
+    "CHECKPOINT_INTERVAL": 10,
+    "DATASET_TEST_3D_SUBSAMPLE_STEP": 1,
+    "DATASET_TRAIN_3D_SUBSAMPLE_STEP": 1,
+    "DATASET_VAL_3D_SUBSAMPLE_STEP": 4,
+    "DROP_PATH_RATE": [
+        0.1,
+        0.1,
+        0.0
+    ],
+    "DROP_RATE": 0.0,
+    "EMA_DECAY": null,
+    "EMA_ENABLED": false,
+    "EPOCHS": 120,
+    "EVAL_FLIP": true,
+    "FIRST_STRIDED_TOKEN_ATTENTION_LAYER": 1,
+    "GPU_ID": 0,
+    "IN_BATCH_AUGMENT": true,
+    "LEARNABLE_MASKED_TOKEN": false,
+    "LOSS_WEIGHT_CENTER": 0.5,
+    "LOSS_WEIGHT_SEQUENCE": 0.5,
+    "MASK_STRIDE": [
+        5,
+        10,
+        20
+    ],
+    "MLP_RATIO": 2,
+    "NUM_HEADS": 8,
+    "NUM_KEYPOINTS": 17,
+    "OPTIMIZER": "AdamW",
+    "OPTIMIZER_PARAMS": {},
+    "OUTPUT_BN": false,
+    "PADDINGS": [
+        [
+            0,
+            0
+        ],
+        [
+            0,
+            0
+        ],
+        [
+            0,
+            0
+        ]
+    ],
+    "PADDING_TYPE": "copy",
+    "QKV_BIAS": true,
+    "REFINE_DROP_RATE": 0.5,
+    "REFINE_FC_SIZE": 1024,
+    "ROOT_KEYTPOINT": 6,
+    "SCHEDULE": "ExponentialDecay",
+    "SCHEDULE_PARAMS": {
+        "decay_rate": 0.99,
+        "decay_steps": 6000,
+        "initial_learning_rate": 4e-05,
+        "staircase": true
+    },
+    "SEQUENCE_LENGTH": 71,
+    "SEQUENCE_STRIDE": 5,
+    "SHUFFLE_SEED": 0,
+    "SPATIAL_EMBED_DIM": 32,
+    "SPATIAL_TRANSFORMER_BLOCKS": 4,
+    "STEPS_PER_EPOCH": 6000,
+    "STRIDES": [
+        3,
+        10,
+        3
+    ],
+    "STRIDE_MASK_RAND_SHIFT": true,
+    "TEMPORAL_EMBED_DIM": 384,
+    "TEMPORAL_TRANSFORMER_BLOCKS": 4,
+    "TEST_STRIDED_EVAL": true,
+    "TOKEN_MASK_RATE": 0.0,
+    "USE_REFINE": false,
+    "VALIDATION_EXAMPLES": -1,
+    "VALIDATION_INTERVAL": 1,
+    "WEIGHT_DECAY": 4e-06
+}
