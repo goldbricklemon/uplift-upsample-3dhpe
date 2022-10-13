@@ -72,7 +72,7 @@ In case this work is useful for your research, please consider citing:
     author={Einfalt, Moritz and Ludwig, Katja and Lienhart, Rainer},
     booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
     month     = {January},
-    year      = {2023}
+    year      = {2023},
     }
 
 
