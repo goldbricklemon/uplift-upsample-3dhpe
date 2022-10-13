@@ -2,8 +2,12 @@
 
 ![Example](examples/example.gif)
 
-This repository is still a barebone version for double-blind review purposes. For now, only pre-trained models and evaluation code are available.
-Training code will be added after the review period.
+This repository is the official implementation of [Uplift and Upsample: Efficient 3D Human Pose Estimation with Uplifting Transformers](https://arxiv.org/abs/2210.06110). 
+
+The paper is accepted for [WACV'23](https://wacv2023.thecvf.com). 
+
+For now, only pre-trained models and evaluation code are available.
+Training code will be added soon.
 
 ## Dependencies
  * Python 3.7+
@@ -60,6 +64,17 @@ If the pre-defined batch size for evaluation is too large for your GPU, you can 
 
 We will add training code soon.
 
+## Citation
+In case this work is useful for your research, please consider citing:
+
+    @InProceedings{einfalt_up3dhpe_WACV23,
+    title={Uplift and Upsample: Efficient 3D Human Pose Estimation with Uplifting Transformers},
+    author={Einfalt, Moritz and Ludwig, Katja and Lienhart, Rainer},
+    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {January},
+    year      = {2023}
+    }
+
 
 ## Acknowledgments
 
@@ -67,6 +82,6 @@ Our code is heavily influenced by the following projects:
 
 * [VideoPose3D](https://github.com/facebookresearch/VideoPose3D)
 * [PoseFormer](https://github.com/zczcwh/PoseFormer)
-* [StridedTransformer](https://github.com/zczcwh/PoseFormer)
+* [StridedTransformer](https://github.com/Vegetebird/StridedTransformer-Pose3D)
 
 We are grateful to the corresponding authors for releasing their code.
