@@ -33,7 +33,7 @@ We provide pre-trained models on Human3.6M for the following settings:
 |:--------------:|:---:|:-------:|:-------------:|:--------------------:|:-----------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:|
 |  h36m_351.h5   | 351 |    5    |  {5, 10, 20}  |                      |        [config/h36m_351.json](config/h36m_351.json)         |  [Google Drive](https://drive.google.com/file/d/1tzDf2IiTQDmsHiNQLmrPlFwN4arGUORa/view?usp=sharing)   |
 | h36m_351_pt.h5 | 351 |    5    |  {5, 10, 20}  |         Yes          |     [config/h36m_351_pt.json](config/h36m_351_pt.json)      |  [Google Drive](https://drive.google.com/file/d/1pVGmA5x23y-cmRfntbkWJIODv_yNqHfJ/view?usp=sharing)   |
-|   h36m_81.h5   | 81  |    2    |  {4, 10, 20}  |                      |      [config/h36m_81.json](config/h36m_81.h5.json)       |    [Google Drive](https://drive.google.com/file/d/1Gba54Tf86YNEhSkLEl48miJvzWy8HQS3/view?usp=sharing) |
+|   h36m_81.h5   | 81  |    2    |  {4, 10, 20}  |                      |      [config/h36m_81.json](config/h36m_81.json)       |    [Google Drive](https://drive.google.com/file/d/1Gba54Tf86YNEhSkLEl48miJvzWy8HQS3/view?usp=sharing) |
 
 Copy any pre-trained model to the `./models` directory.
 
