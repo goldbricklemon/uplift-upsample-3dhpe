@@ -12,7 +12,6 @@ Training code will be added soon.
 ## Dependencies
  * Python 3.7+
  * tensorflow 2.4+
- * einops=0.3.2
 
 ## Dataset
 ### Human3.6M
