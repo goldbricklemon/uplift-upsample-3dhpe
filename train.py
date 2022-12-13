@@ -206,14 +206,15 @@ if __name__ == '__main__':
                         metavar="gpu_id",
                         help='Overwrites the GPU_ID from the config',
                         type=str)
-    parser.add_argument('--dataset', required=True,
+    parser.add_argument('--dataset', required=False,
+                        default="h36m",
                         metavar="{h36m, amass}",
                         help='Dataset used for training')
     parser.add_argument('--dataset_val', required=False,
                         default=None,
                         metavar="{h36m, amass}",
                         help='Dataset used for validation')
-    parser.add_argument('--h36m_path', required=True,
+    parser.add_argument('--h36m_path', required=False,
                         default="./data/data_3d_h36m.npz",
                         metavar="/path/to/h36m/",
                         help='Directory of the H36m dataset')
@@ -697,14 +698,6 @@ if __name__ == '__main__':
                 metric_hist.add_data("AW-NMPJPE", value=action_wise_results['nmpjpe'], step=epoch)
                 metric_hist.add_data("AW-PAMPJPE", value=action_wise_results['pampjpe'], step=epoch)
 
-            print(f"Saving last checkpoint @ epoch {epoch} as .h5:")
-            if last_weights_path is not None:
-                os.remove(last_weights_path)
-
-            last_weights_path = os.path.join(checkpoint_dir, f"last_weights_{epoch:04d}.h5")
-            print(last_weights_path)
-            val_model.save_weights(last_weights_path)
-
             if config.BEST_CHECKPOINT_METRIC is not None and args.val_subset is not None:
                 # Save best checkpoint as .h5
                 best_value, best_epoch = metric_hist.best_value(config.BEST_CHECKPOINT_METRIC)
@@ -719,6 +712,14 @@ if __name__ == '__main__':
                         os.remove(prev_best_weights_path)
 
                     prev_best_weights_path = weights_path
+
+        print(f"Saving last checkpoint @ epoch {epoch} as .h5:")
+        if last_weights_path is not None:
+            os.remove(last_weights_path)
+
+        last_weights_path = os.path.join(checkpoint_dir, f"last_weights_{epoch:04d}.h5")
+        print(last_weights_path)
+        val_model.save_weights(last_weights_path)
 
     del train_dataset_iter
     del train_dataset
