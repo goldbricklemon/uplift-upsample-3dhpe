@@ -36,7 +36,7 @@ You will need the following generated files:
 Copy all files to the `./data` directory.
 
 ### AMASS
-In case you want to pre-train your own model on AMASS mocap data, please follow the [dataset setup](./data/DATASET.md).
+In case you want to pre-train your own model on [AMASS](https://github.com/nghorbani/amass) mocap data, please follow the [dataset setup](./data/DATASET.md#amass).
 
 ## Trained Models
 
@@ -109,7 +109,7 @@ Logs, checkpoints, etc. will be stored in the specified `./logs/xxx` directory.
 If you want you can pre-train your own model on AMASS mocap data. 
 We provide instructions to run the pre-training used for [config/h36m_351_pt.json](config/h36m_351_pt.json).
 
-Make sure to follow the AMASS [dataset setup](./data/DATASET.md). Pre-training on AMASS can be run with the same `train.py` script:
+Make sure to follow the AMASS [dataset setup](./data/DATASET.md#amass). Pre-training on AMASS can be run with the same `train.py` script:
 
 ```bash
 python train.py --dataset amass --amass_path ./data/amass --test_subset none  --config ./config/amass_351.json  --out_dir ./logs/amass_351
