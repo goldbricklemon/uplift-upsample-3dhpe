@@ -16,7 +16,7 @@ from common.dataset import metrics as h36metrics
 
 def h36_action_wise_eval(pred_3d, gt_3d, actions, root_index):
     action_set = h36m_splits.renamed_actions
-    metrics = ["mpjpe", "nmpjpe", "pmpjpe"]
+    metrics = ["mpjpe", "nmpjpe", "pampjpe"]
     per_action_results = {}
 
     average = lambda a: np.mean(a[a >= 0])
@@ -26,24 +26,24 @@ def h36_action_wise_eval(pred_3d, gt_3d, actions, root_index):
                              root_index=root_index, normalize=False) * 1000.
     frame_nmpjpe = h36metrics.nmpjpe(pred=pred_3d, gt=gt_3d,
                                root_index=root_index, alignment="root", normalize=False) * 1000.
-    frame_pmpjpe = h36metrics.pmpjpe(pred=pred_3d, gt=gt_3d, normalize=False) * 1000.
+    frame_pampjpe = h36metrics.pmpjpe(pred=pred_3d, gt=gt_3d, normalize=False) * 1000.
 
     for a_i, action_name in enumerate(action_set):
         selector = np.where(actions == a_i)
         mpjpe = average(frame_mpjpe[selector])
         nmpjpe = average(frame_nmpjpe[selector])
-        pmpjpe = average(frame_pmpjpe[selector])
+        pampjpe = average(frame_pampjpe[selector])
 
         out_dict = {}
-        for name, value in zip(metrics, [mpjpe, nmpjpe, pmpjpe]):
+        for name, value in zip(metrics, [mpjpe, nmpjpe, pampjpe]):
             out_dict[name] = value
         per_action_results[action_name] = out_dict
 
     frame_results = {}
     mpjpe = average(frame_mpjpe)
     nmpjpe = average(frame_nmpjpe)
-    pmpjpe = average(frame_pmpjpe)
-    for name, value in zip(metrics, [mpjpe, nmpjpe, pmpjpe]):
+    pampjpe = average(frame_pampjpe)
+    for name, value in zip(metrics, [mpjpe, nmpjpe, pampjpe]):
         frame_results[name] = value
 
     average_results = {}
@@ -55,20 +55,20 @@ def h36_action_wise_eval(pred_3d, gt_3d, actions, root_index):
 
 
 def frame_wise_eval(pred_3d, gt_3d, root_index):
-    metrics = ["mpjpe", "nmpjpe", "pmpjpe"]
+    metrics = ["mpjpe", "nmpjpe", "pampjpe"]
     # Run H36m 3D evaluation
     frame_mpjpe = h36metrics.mpjpe(pred=pred_3d, gt=gt_3d,
                              root_index=root_index, normalize=False) * 1000.
     frame_nmpjpe = h36metrics.nmpjpe(pred=pred_3d, gt=gt_3d,
                                root_index=root_index, alignment="root", normalize=False) * 1000.
-    frame_pmpjpe = h36metrics.pmpjpe(pred=pred_3d, gt=gt_3d, normalize=False) * 1000.
+    frame_pampjpe = h36metrics.pmpjpe(pred=pred_3d, gt=gt_3d, normalize=False) * 1000.
 
     frame_results = {}
     average = lambda a: np.mean(a[a >= 0])
     mpjpe = average(frame_mpjpe)
     nmpjpe = average(frame_nmpjpe)
-    pmpjpe = average(frame_pmpjpe)
-    for name, value in zip(metrics, [mpjpe, nmpjpe, pmpjpe]):
+    pampjpe = average(frame_pampjpe)
+    for name, value in zip(metrics, [mpjpe, nmpjpe, pampjpe]):
         frame_results[name] = value
     return frame_results
 
@@ -107,7 +107,7 @@ def compute_and_log_metrics(pred3d, gt3d, actions, root_index, action_wise):
         sys.stdout.flush()
 
     log("Computing metrics:")
-    metrics = ["mpjpe", "nmpjpe", "pmpjpe"]
+    metrics = ["mpjpe", "nmpjpe", "pampjpe"]
     frame_results, average_results, per_action_results = h36_action_wise_eval(
         pred_3d=pred3d,
         gt_3d=gt3d,

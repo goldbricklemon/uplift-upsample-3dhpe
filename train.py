@@ -448,8 +448,8 @@ if __name__ == '__main__':
     last_weights_path = None
 
     metric_hist = MetricHistory()
-    metrics = ["loss", "AMPJPE", "MPJPE", "NMPJPE", "PAMPJPE"]
-    higher_is_better = [False, False, False, False, False]
+    metrics = ["loss", "MPJPE", "NMPJPE", "PAMPJPE"]
+    higher_is_better = [False,  False, False, False]
     if val_dataset_name == "h36m":
         metrics += ["AW-MPJPE", "AW-NMPJPE", "AW-PAMPJPE"]
         higher_is_better += [False, False, False]
@@ -665,7 +665,6 @@ if __name__ == '__main__':
 
             log(
                 f"Finished validation in {val_duration_string}, loss: {float(val_run_loss.result()):.6f}, "
-                f"AMPJPE: {frame_results['ampjpe']:.2f}, "
                 f"MPJPE: {frame_results['mpjpe']:.2f}, "
                 f"NMPJPE: {frame_results['nmpjpe']:.2f}, "
                 f"PAMPJPE: {frame_results['pampjpe']:.2f}, "
@@ -679,7 +678,6 @@ if __name__ == '__main__':
 
             with tb_writer.as_default():
                 tf.summary.scalar('val/loss', val_run_loss.result(), step=epoch)
-                tf.summary.scalar('val/AMPJPE', frame_results['ampjpe'], step=epoch)
                 tf.summary.scalar('val/MPJPE', frame_results['mpjpe'], step=epoch)
                 tf.summary.scalar('val/NMPJPE', frame_results['nmpjpe'], step=epoch)
                 tf.summary.scalar('val/PAMPJPE', frame_results['pampjpe'], step=epoch)
@@ -689,7 +687,6 @@ if __name__ == '__main__':
                     tf.summary.scalar('val/AW-PAMPJPE', action_wise_results['pampjpe'], step=epoch)
 
             metric_hist.add_data("loss", value=val_run_loss.result(), step=epoch)
-            metric_hist.add_data("AMPJPE", value=frame_results['ampjpe'], step=epoch)
             metric_hist.add_data("MPJPE", value=frame_results['mpjpe'], step=epoch)
             metric_hist.add_data("NMPJPE", value=frame_results['nmpjpe'], step=epoch)
             metric_hist.add_data("PAMPJPE", value=frame_results['pampjpe'], step=epoch)

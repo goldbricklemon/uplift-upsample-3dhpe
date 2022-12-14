@@ -10,6 +10,7 @@ The paper is accepted for [WACV'23](https://wacv2023.thecvf.com).
 
 ## Updates
 
+* 2022-12-14: Added code and instructions for AMASS pre-training.
 * 2022-12-12: Added training code.
 * 2022-12-12: Updated requirements.
 * 2022-10-12: Added evalaution code an pre-trained models.
@@ -34,17 +35,20 @@ You will need the following generated files:
 
 Copy all files to the `./data` directory.
 
+### AMASS
+In case you want to pre-train your own model on AMASS mocap data, please follow the [dataset setup](./data/DATASET.md).
+
 ## Trained Models
 
 ### Human3.6M
 
 We provide trained models on Human3.6M for the following settings:
 
-|      Name      |  N  |  s_out  |     s_in      | AMASS pre-training |                           Config                            |                                               Download                                                |
-|:--------------:|:---:|:-------:|:-------------:|:------------------:|:-----------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:|
-|  h36m_351.h5   | 351 |    5    |  {5, 10, 20}  |                    |        [config/h36m_351.json](config/h36m_351.json)         |  [Google Drive](https://drive.google.com/file/d/1tzDf2IiTQDmsHiNQLmrPlFwN4arGUORa/view?usp=sharing)   |
-| h36m_351_pt.h5 | 351 |    5    |  {5, 10, 20}  |        Yes         |     [config/h36m_351_pt.json](config/h36m_351_pt.json)      |  [Google Drive](https://drive.google.com/file/d/1pVGmA5x23y-cmRfntbkWJIODv_yNqHfJ/view?usp=sharing)   |
-|   h36m_81.h5   | 81  |    2    |  {4, 10, 20}  |                    |      [config/h36m_81.json](config/h36m_81.json)       |    [Google Drive](https://drive.google.com/file/d/1Gba54Tf86YNEhSkLEl48miJvzWy8HQS3/view?usp=sharing) |
+|      Name      |  N  |  s_out  |     s_in      | AMASS pre-training |                       Config                       |                                               Download                                                |
+|:--------------:|:---:|:-------:|:-------------:|:------------------:|:--------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:|
+|  h36m_351.h5   | 351 |    5    |  {5, 10, 20}  |                    |    [config/h36m_351.json](config/h36m_351.json)    |  [Google Drive](https://drive.google.com/file/d/1tzDf2IiTQDmsHiNQLmrPlFwN4arGUORa/view?usp=sharing)   |
+| h36m_351_pt.h5 | 351 |    5    |  {5, 10, 20}  |        Yes         | [config/h36m_351_pt.json](config/h36m_351_pt.json) |  [Google Drive](https://drive.google.com/file/d/1pVGmA5x23y-cmRfntbkWJIODv_yNqHfJ/view?usp=sharing)   |
+|   h36m_81.h5   | 81  |    2    |  {4, 10, 20}  |                    | [config/h36m_81.json](config/h36m_81.json)         |    [Google Drive](https://drive.google.com/file/d/1Gba54Tf86YNEhSkLEl48miJvzWy8HQS3/view?usp=sharing) |
 
 Copy any trained model to the `./models` directory.
 
@@ -102,7 +106,14 @@ Logs, checkpoints, etc. will be stored in the specified `./logs/xxx` directory.
 
 ### AMASS
 
-We will provide instructions to pre-train your own model on AMASS soon.
+If you want you can pre-train your own model on AMASS mocap data. 
+We provide instructions to run the pre-training used for [config/h36m_351_pt.json](config/h36m_351_pt.json).
+
+Make sure to follow the AMASS [dataset setup](./data/DATASET.md). Pre-training on AMASS can be run with the same `train.py` script:
+
+```bash
+python train.py --dataset amass --amass_path ./data/amass --test_subset none  --config ./config/amass_351.json  --out_dir ./logs/amass_351
+```
 
 ## Citation
 

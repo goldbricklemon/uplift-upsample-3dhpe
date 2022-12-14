@@ -33,7 +33,7 @@ def mpjpe(pred, gt, root_index, normalize=True):
         return dist
     else:
         dist = np.where(valid, dist, 0.)
-        norm = np.sum(valid == True)
+        norm = float(np.sum(valid > 0.))
         return np.sum(dist) / norm
 
 
@@ -77,7 +77,7 @@ def nmpjpe(pred, gt, root_index, alignment="root", normalize=True):
         return dist
     else:
         dist = np.where(valid, dist, 0.)
-        norm = np.sum(valid == True)
+        norm = float(np.sum(valid > 0.))
         return np.sum(dist) / norm
 
 
@@ -113,7 +113,7 @@ def pmpjpe(pred, gt, normalize=True):
         return dist
     else:
         dist = np.where(valid, dist, 0.)
-        norm = np.sum(valid == True)
+        norm = float(np.sum(valid > 0.))
         return np.sum(dist) / norm
 
 
