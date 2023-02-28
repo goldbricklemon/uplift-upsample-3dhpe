@@ -241,7 +241,7 @@ class UpliftUpsampleTransformer(keras.Model):
         # Full sequence temporal blocks
         if self.temporal_depth > 0:
             dpr = drop_path_rate[1] if type(drop_path_rate) is list else drop_path_rate
-            path_drop_rates = np.linspace(0, dpr, self.temporal_d_model)
+            path_drop_rates = np.linspace(0, dpr, self.temporal_depth)
             self.temporal_blocks = [
                 vit.TransformerBlock(dim=self.temporal_d_model, num_heads=num_heads, mlp_ratio=mlp_ratio,
                                      qkv_bias=qkv_bias, attn_dropout=attn_drop_rate,
